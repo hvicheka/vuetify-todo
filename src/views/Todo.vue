@@ -55,18 +55,13 @@ export default {
   name: 'Home',
   data() {
     return {
-      newTaskTitle: '',
+      	newTaskTitle: '',
     }
   },
   methods: {
-    addTask() {
-      let newTask = {
-        id: Date.now(),
-        title: this.newTaskTitle,
-        done: false
-      }
-      this.tasks.push(newTask)
-      this.newTaskTitle = ''
+    addTask(){
+      this.$store.commit('addTask',this.newTaskTitle)
+	  this.newTaskTitle = ''
     },
     doneTask(id) {
       let task = this.tasks.find(task => task.id === id)

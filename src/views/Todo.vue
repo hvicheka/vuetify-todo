@@ -17,7 +17,7 @@
         flat
     >
       <div v-for="task in $store.state.tasks" :key="task.id">
-        <v-list-item @click="doneTask(task.id)" :class="{'blue lighten-5' : task.done}">
+        <v-list-item @click="$store.commit('doneTask',task.id)" :class="{'blue lighten-5' : task.done}">
           <template v-slot:default>
             <v-list-item-action>
               <v-checkbox :input-value="task.done"></v-checkbox>
@@ -62,10 +62,6 @@ export default {
     addTask(){
       this.$store.commit('addTask',this.newTaskTitle)
 	  this.newTaskTitle = ''
-    },
-    doneTask(id) {
-      let task = this.tasks.find(task => task.id === id)
-      task.done = !task.done
     },
     deleteTask(id) {
       this.tasks = this.tasks.filter(task => task.id !== id)

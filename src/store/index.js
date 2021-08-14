@@ -32,6 +32,10 @@ export default new Vuex.Store({
             }
             state.tasks.push(newTask)
         },
+        doneTask(state,id) {
+            let task = state.tasks.find(task => task.id === id)
+            task.done = !task.done
+        },
     },
     actions: {},
     getters: {},

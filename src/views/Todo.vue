@@ -12,11 +12,11 @@
         append-icon="mdi-plus"
     ></v-text-field>
     <v-list
-        v-if="tasks.length"
+        v-if="$store.state.tasks.length"
         class="p-0"
         flat
     >
-      <div v-for="task in tasks" :key="task.id">
+      <div v-for="task in $store.state.tasks" :key="task.id">
         <v-list-item @click="doneTask(task.id)" :class="{'blue lighten-5' : task.done}">
           <template v-slot:default>
             <v-list-item-action>
@@ -56,23 +56,6 @@ export default {
   data() {
     return {
       newTaskTitle: '',
-      tasks: [
-        // {
-        //   id: 1,
-        //   title: "Wake up",
-        //   done: true
-        // },
-        // {
-        //   id: 2,
-        //   title: "Get Bananas",
-        //   done: false
-        // },
-        // {
-        //   id: 3,
-        //   title: "Eat Bananas",
-        //   done: false
-        // }
-      ]
     }
   },
   methods: {

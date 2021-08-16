@@ -19,7 +19,3 @@ export default {
   components: {Task}
 }
 </script>
-
-<style scoped>
-
-</style>

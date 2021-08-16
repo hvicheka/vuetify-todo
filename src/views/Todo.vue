@@ -1,16 +1,6 @@
 <template>
   <div class="home pa-6">
-    <v-text-field
-        v-model="newTaskTitle"
-        @click:append="addTask"
-        @keyup.enter="addTask"
-        class="mb-3"
-        outlined
-        label="New Task"
-        clearable
-        hide-details
-        append-icon="mdi-plus"
-    ></v-text-field>
+    <new-task></new-task>
     <v-list
         v-if="$store.state.tasks.length"
         class="p-0"
@@ -50,20 +40,11 @@
 </template>
 
 <script>
+import NewTask from "../components/Todo/NewTask";
 
 export default {
   name: 'Home',
-  data() {
-    return {
-      	newTaskTitle: '',
-    }
-  },
-  methods: {
-    addTask(){
-      this.$store.commit('addTask',this.newTaskTitle)
-	  this.newTaskTitle = ''
-    }
-  }
+  components: {NewTask}
 }
 </script>
 

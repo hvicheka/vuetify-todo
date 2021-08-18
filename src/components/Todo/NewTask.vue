@@ -22,8 +22,10 @@ export default {
   },
   methods: {
     addTask() {
-      this.$store.dispatch('addTask', this.newTaskTitle)
-      this.newTaskTitle = ''
+      if (this.newTaskTitle) {
+        this.$store.dispatch('addTask', this.newTaskTitle)
+        this.newTaskTitle = ''
+      }
     }
   }
 }

@@ -10,7 +10,7 @@
           color="blue"
           text
           v-bind="attrs"
-          @click="snackbar = false"
+          @click="$store.commit('hideSnackbar')"
       >
         Close
       </v-btn>
@@ -20,11 +20,7 @@
 
 <script>
 export default {
-  name: "Snackbar",
-  data: () => ({
-    snackbar: true,
-    text: `Task added`,
-  }),
+  name: "Snackbar"
 }
 </script>
 

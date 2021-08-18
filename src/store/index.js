@@ -48,7 +48,6 @@ export default new Vuex.Store({
             let timeout = 0
             // if snackbar is showing
             if (state.snackbar.show) {
-                state.snackbar.show = false
                 timeout = 300
             }
             // show new snackbar with timeout
@@ -56,6 +55,9 @@ export default new Vuex.Store({
                 state.snackbar.show = true
                 state.snackbar.text = text
             }, timeout)
+        },
+        hideSnackbar(state) {
+            state.snackbar.show = false
         }
     },
     actions: {

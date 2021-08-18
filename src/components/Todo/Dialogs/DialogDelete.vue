@@ -9,20 +9,20 @@
         Delete Task?
       </v-card-title>
       <v-card-text>
-        Are you sure, you wanna delete this Go to bed task?
+        Are you sure, you wanna delete this "{{ task.title }}" task?
       </v-card-text>
       <v-card-actions>
         <v-spacer></v-spacer>
         <v-btn
             text
-            @click="dialog = false"
+            @click="$emit('close')"
         >
           No
         </v-btn>
         <v-btn
+            @click="$store.dispatch('deleteTask',task.id)"
             color="red darken-1"
             text
-            @click="dialog = false"
         >
           Yes
         </v-btn>
@@ -34,10 +34,6 @@
 <script>
 export default {
   name: "DialogDelete",
-  data () {
-    return {
-      dialog: false,
-    }
-  },
+  props: ['task']
 }
 </script>

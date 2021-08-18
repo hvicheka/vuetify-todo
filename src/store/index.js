@@ -23,7 +23,8 @@ export default new Vuex.Store({
             }
         ],
         snackbar: {
-            show: true
+            show: false,
+            timeout: 2000
         }
     },
     mutations: {
@@ -50,6 +51,10 @@ export default new Vuex.Store({
         addTask({commit}, newTaskTitle) {
             commit('addTask', newTaskTitle)
             commit('showSnackbar')
+        },
+        deleteTask({commit},id){
+            commit('deleteTask',id)
+            commit("showSnackbar")
         }
     },
     getters: {},

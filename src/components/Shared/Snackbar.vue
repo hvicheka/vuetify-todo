@@ -1,12 +1,13 @@
 <template>
   <v-snackbar
       v-model="$store.state.snackbar.show"
+      :timeout="$store.state.snackbar.timeout"
   >
     {{ text }}
 
     <template v-slot:action="{ attrs }">
       <v-btn
-          color="pink"
+          color="blue"
           text
           v-bind="attrs"
           @click="snackbar = false"

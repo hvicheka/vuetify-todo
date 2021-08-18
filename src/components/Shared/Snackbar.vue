@@ -22,7 +22,7 @@ export default {
   name: "Snackbar",
   data: () => ({
     snackbar: true,
-    text: `Hello, I'm a snackbar`,
+    text: `Task added`,
   }),
 }
 </script>

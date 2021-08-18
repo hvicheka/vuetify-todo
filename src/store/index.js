@@ -21,10 +21,13 @@ export default new Vuex.Store({
                 title: "Eat Bananas",
                 done: false
             }
-        ]
+        ],
+        snackbar: {
+            show: true
+        }
     },
     mutations: {
-        addTask(state,newTaskTitle) {
+        addTask(state, newTaskTitle) {
             let newTask = {
                 id: Date.now(),
                 title: newTaskTitle,
@@ -32,15 +35,23 @@ export default new Vuex.Store({
             }
             state.tasks.push(newTask)
         },
-        doneTask(state,id) {
+        doneTask(state, id) {
             let task = state.tasks.find(task => task.id === id)
             task.done = !task.done
         },
-        deleteTask(state,id) {
+        deleteTask(state, id) {
             state.tasks = state.tasks.filter(task => task.id !== id)
+        },
+        showSnackbar(state) {
+            state.snackbar.show = true
         }
     },
-    actions: {},
+    actions: {
+        addTask({commit}, newTaskTitle) {
+            commit('addTask', newTaskTitle)
+            commit('showSnackbar')
+        }
+    },
     getters: {},
     modules: {}
 })

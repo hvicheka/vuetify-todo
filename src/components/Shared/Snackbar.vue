@@ -3,7 +3,7 @@
       v-model="$store.state.snackbar.show"
       :timeout="$store.state.snackbar.timeout"
   >
-    {{ text }}
+    {{ $store.state.snackbar.text }}
 
     <template v-slot:action="{ attrs }">
       <v-btn

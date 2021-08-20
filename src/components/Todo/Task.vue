@@ -11,37 +11,20 @@
           </v-list-item-title>
         </v-list-item-content>
         <v-list-item-action>
-          <v-btn
-              @click.stop="dialogs.delete = true"
-              icon
-          >
-            <v-icon color="primary lighten-1">mdi-delete</v-icon>
-          </v-btn>
+          <task-menu :task="task"></task-menu>
         </v-list-item-action>
       </template>
     </v-list-item>
     <v-divider></v-divider>
-    <dialog-delete
-        v-if="dialogs.delete"
-        @close="dialogs.delete = false"
-        :task="task">
-    </dialog-delete>
   </div>
 </template>
 
 <script>
-import DialogDelete from "./Dialogs/DialogDelete";
+import TaskMenu from "./TaskMenu";
 
 export default {
   name: "Task",
   props: ['task'],
-  components: {DialogDelete},
-  data() {
-    return {
-      dialogs: {
-        delete: false
-      }
-    }
-  }
+  components: {TaskMenu}
 }
 </script>

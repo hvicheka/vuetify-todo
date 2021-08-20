@@ -27,6 +27,7 @@
             @click="updateTaskTitle"
             color="red darken-1"
             text
+            :disabled="taskTitleInvalid"
         >
           Save
         </v-btn>
@@ -49,12 +50,19 @@ export default {
   },
   methods: {
     updateTaskTitle() {
-      let payload = {
-        id: this.task.id,
-        title: this.taskTitle
+      if (!this.taskTitleInvalid) {
+        let payload = {
+          id: this.task.id,
+          title: this.taskTitle
+        }
+        this.$store.commit('updateTaskTitle', payload)
+        this.$emit('close')
       }
-      this.$store.commit('updateTaskTitle', payload)
-      this.$emit('close')
+    }
+  },
+  computed: {
+    taskTitleInvalid() {
+      return !this.taskTitle || this.taskTitle === this.task.title
     }
   }
 }

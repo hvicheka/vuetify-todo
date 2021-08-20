@@ -9,16 +9,19 @@ export default new Vuex.Store({
             {
                 id: 1,
                 title: "Wake up",
+                due_date: '2021-08-02',
                 done: true
             },
             {
                 id: 2,
                 title: "Get Bananas",
+                due_date: '2021-08-02',
                 done: false
             },
             {
                 id: 3,
                 title: "Eat Bananas",
+                due_date: null,
                 done: false
             }
         ],

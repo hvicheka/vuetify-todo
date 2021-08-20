@@ -11,7 +11,7 @@
       <v-card-text>
         Edit the title of this task:
         <v-text-field
-            v-model="task.title"
+            v-model="taskTitle"
             color="primary"
         ></v-text-field>
       </v-card-text>
@@ -37,6 +37,14 @@
 <script>
 export default {
   name: "DialogEdit",
-  props: ['task']
+  props: ['task'],
+  data(){
+    return {
+      taskTitle: null
+    }
+  },
+  mounted() {
+    this.taskTitle = this.task.title
+  }
 }
 </script>

@@ -12,7 +12,7 @@
         Edit the title of this task:
         <v-text-field
             v-model="taskTitle"
-            color="primary"
+            @keyup.enter="updateTaskTitle"
         ></v-text-field>
       </v-card-text>
       <v-card-actions>
@@ -54,6 +54,7 @@ export default {
         title: this.taskTitle
       }
       this.$store.commit('updateTaskTitle', payload)
+      this.$emit('close')
     }
   }
 }

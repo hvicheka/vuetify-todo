@@ -37,6 +37,10 @@ export default new Vuex.Store({
             }
             state.tasks.push(newTask)
         },
+        updateTaskTitle(state, payload) {
+            let task = state.tasks.find(task => task.id === payload.id)
+            task.title = payload.title
+        },
         doneTask(state, id) {
             let task = state.tasks.find(task => task.id === id)
             task.done = !task.done

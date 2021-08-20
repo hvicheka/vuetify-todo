@@ -24,6 +24,7 @@
           Cancel
         </v-btn>
         <v-btn
+            @click="updateTaskTitle"
             color="red darken-1"
             text
         >
@@ -38,13 +39,22 @@
 export default {
   name: "DialogEdit",
   props: ['task'],
-  data(){
+  data() {
     return {
       taskTitle: null
     }
   },
   mounted() {
     this.taskTitle = this.task.title
+  },
+  methods: {
+    updateTaskTitle() {
+      let payload = {
+        id: this.task.id,
+        title: this.taskTitle
+      }
+      this.$store.commit('updateTaskTitle', payload)
+    }
   }
 }
 </script>

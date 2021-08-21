@@ -10,6 +10,12 @@
             {{ task.title }}
           </v-list-item-title>
         </v-list-item-content>
+        <v-list-item-action v-if="task.due_date">
+          <v-list-item-action-text>
+            <v-icon small>mdi-calendar</v-icon>
+            {{ task.due_date | formatDueDate}}
+          </v-list-item-action-text>
+        </v-list-item-action>
         <v-list-item-action>
           <task-menu :task="task"></task-menu>
         </v-list-item-action>
@@ -21,10 +27,15 @@
 
 <script>
 import TaskMenu from "./TaskMenu";
-
+import {format} from 'date-fns'
 export default {
   name: "Task",
   props: ['task'],
-  components: {TaskMenu}
+  components: {TaskMenu},
+  filters: {
+    formatDueDate(value){
+      return format(new Date(value),'MMM dd')
+    }
+  }
 }
 </script>

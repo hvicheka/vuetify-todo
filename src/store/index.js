@@ -44,6 +44,10 @@ export default new Vuex.Store({
             let task = state.tasks.find(task => task.id === payload.id)
             task.title = payload.title
         },
+        updateTaskDueDate(state, payload) {
+            let task = state.tasks.find(task => task.id === payload.id)
+            task.due_date = payload.due_date
+        },
         doneTask(state, id) {
             let task = state.tasks.find(task => task.id === id)
             task.done = !task.done
@@ -79,6 +83,10 @@ export default new Vuex.Store({
         updateTaskTitle({commit}, payload) {
             commit('updateTaskTitle', payload)
             commit('showSnackbar', 'Task updated')
+        },
+        updateTaskDueDate({commit}, payload) {
+            commit('updateTaskDueDate', payload)
+            commit('showSnackbar', 'Task Due Date updated!...')
         }
     },
     getters: {},

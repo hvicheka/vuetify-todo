@@ -65,7 +65,7 @@
         </v-row>
         <v-row>
           <v-toolbar-title class="text-h4 ml-4">
-            Vuetify Todo
+            {{ $store.state.appTitle }}
           </v-toolbar-title>
         </v-row>
         <v-row>
@@ -91,7 +91,7 @@ import Search from "./components/Tools/Search";
 
 export default {
   data: () => ({
-    drawer: true,
+    drawer: null,
     items: [
       {title: 'Todo', icon: 'mdi-format-list-checks', to: '/'},
       {title: 'About', icon: 'mdi-help-box', to: '/about'},

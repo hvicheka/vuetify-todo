@@ -32,6 +32,7 @@ export default new Vuex.Store({
             timeout: 2000
         },
         search: null,
+        sorting: false
     },
     mutations: {
         addTask(state, newTaskTitle) {

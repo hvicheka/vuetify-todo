@@ -65,7 +65,7 @@
         </v-row>
         <v-row>
           <v-toolbar-title class="text-h4 ml-4">
-            {{ $store.state.appTitle }}
+            {{ appTitle }}
           </v-toolbar-title>
         </v-row>
         <v-row>
@@ -97,6 +97,11 @@ export default {
       {title: 'About', icon: 'mdi-help-box', to: '/about'},
     ],
   }),
-  components: {Snackbar, LiveDateTime, Search}
+  components: {Snackbar, LiveDateTime, Search},
+  computed: {
+    appTitle() {
+      return process.env.VUE_APP_TITLE
+    }
+  }
 }
 </script>

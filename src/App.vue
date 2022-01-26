@@ -2,20 +2,25 @@
   <v-app id="inspire">
     <v-navigation-drawer
         v-model="drawer"
+        :mobile-breakpoint="768"
         app
     >
-      <v-list-item>
-        <v-list-item-content>
-          <v-list-item-title class="text-h6">
-            Vuetify Todo
-          </v-list-item-title>
-          <v-list-item-subtitle>
-            BEST TODO EVER
-          </v-list-item-subtitle>
-        </v-list-item-content>
-      </v-list-item>
-
-      <v-divider></v-divider>
+      <v-img
+          class="pa-5"
+          src="mountain.jpg"
+          height="150"
+          gradient="to top right, rgba(19,84,122,.5), rgba(128,208,199,.8)"
+      >
+        <v-avatar class="mb-3 ml-5">
+          <img
+              height="100"
+              src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png"
+              alt="Hok Vicheka"
+          >
+        </v-avatar>
+        <div class="white--text">hvicheka.it@gmail.com</div>
+        <div class="white--text">Hok Vicheka</div>
+      </v-img>
 
       <v-list
           dense
@@ -44,6 +49,7 @@
         dark
         src="mountain.jpg"
         prominent
+        height="150"
     >
       <template v-slot:img="{ props }">
         <v-img
@@ -68,18 +74,7 @@
       </v-container>
 
       <v-spacer></v-spacer>
-
-      <v-btn icon>
-        <v-icon>mdi-magnify</v-icon>
-      </v-btn>
-
-      <v-btn icon>
-        <v-icon>mdi-heart</v-icon>
-      </v-btn>
-
-      <v-btn icon>
-        <v-icon>mdi-dots-vertical</v-icon>
-      </v-btn>
+      <search></search>
     </v-app-bar>
 
     <v-main>
@@ -92,15 +87,16 @@
 <script>
 import Snackbar from "./components/Shared/Snackbar";
 import LiveDateTime from "./components/Tools/LiveDateTime";
+import Search from "./components/Tools/Search";
 
 export default {
   data: () => ({
-    drawer: null,
+    drawer: true,
     items: [
       {title: 'Todo', icon: 'mdi-format-list-checks', to: '/'},
       {title: 'About', icon: 'mdi-help-box', to: '/about'},
     ],
   }),
-  components: {Snackbar, LiveDateTime}
+  components: {Snackbar, LiveDateTime, Search}
 }
 </script>

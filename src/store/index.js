@@ -29,7 +29,8 @@ export default new Vuex.Store({
             text: '',
             show: false,
             timeout: 2000
-        }
+        },
+        search: null,
     },
     mutations: {
         addTask(state, newTaskTitle) {
@@ -69,7 +70,11 @@ export default new Vuex.Store({
         },
         hideSnackbar(state) {
             state.snackbar.show = false
-        }
+        },
+        setSearch(state, value) {
+            state.search = value
+            console.log('search', value)
+        },
     },
     actions: {
         addTask({commit}, newTaskTitle) {
@@ -89,6 +94,15 @@ export default new Vuex.Store({
             commit('showSnackbar', 'Task Due Date updated!...')
         }
     },
-    getters: {},
+    getters: {
+        tasksFiltered(state) {
+            if (!state.search) {
+                return state.tasks
+            }
+            return state.tasks.filter(task =>
+                task.title.toLowerCase().includes(state.search.toLowerCase())
+            )
+        }
+    },
     modules: {}
 })

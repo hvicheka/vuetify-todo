@@ -60,7 +60,7 @@ export default {
   components: {
     DialogDelete,
     DialogEdit,
-    DialogDueDate
+    DialogDueDate,
   },
   data: () => ({
     dialogs: {
@@ -88,6 +88,12 @@ export default {
         icon: 'mdi-delete',
         click() {
           this.dialogs.delete = true
+        }
+      }, {
+        title: 'Sort',
+        icon: 'mdi-drag-horizontal-variant',
+        click() {
+          this.$store.commit('toggleSorting')
         }
       },
     ],

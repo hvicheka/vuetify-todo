@@ -77,6 +77,12 @@ export default new Vuex.Store({
             state.search = value
             console.log('search', value)
         },
+        toggleSorting(state) {
+            state.sorting = !this.state.sorting
+        },
+        setTasks(state, tasks) {
+            state.tasks = tasks
+        }
     },
     actions: {
         addTask({commit}, newTaskTitle) {

@@ -49,7 +49,7 @@
         dark
         src="mountain.jpg"
         prominent
-        height="150"
+        :height="$route.path ==='/' ? 220 : 150"
     >
       <template v-slot:img="{ props }">
         <v-img
@@ -58,10 +58,13 @@
         ></v-img>
       </template>
 
-      <v-container class="pa-0">
+      <v-container fluid class="pa-0">
         <v-row>
           <v-app-bar-nav-icon @click="drawer = !drawer"></v-app-bar-nav-icon>
           <v-spacer></v-spacer>
+          <div>
+            <search></search>
+          </div>
         </v-row>
         <v-row>
           <v-toolbar-title class="text-h4 ml-4">
@@ -71,10 +74,11 @@
         <v-row>
           <live-date-time></live-date-time>
         </v-row>
+        <v-row v-if="this.$route.path === '/'">
+          <new-task></new-task>
+        </v-row>
       </v-container>
-
       <v-spacer></v-spacer>
-      <search></search>
     </v-app-bar>
 
     <v-main>
@@ -88,6 +92,7 @@
 import Snackbar from "./components/Shared/Snackbar";
 import LiveDateTime from "./components/Tools/LiveDateTime";
 import Search from "./components/Tools/Search";
+import NewTask from "./components/Todo/NewTask";
 
 export default {
   data: () => ({
@@ -97,7 +102,7 @@ export default {
       {title: 'About', icon: 'mdi-help-box', to: '/about'},
     ],
   }),
-  components: {Snackbar, LiveDateTime, Search},
+  components: {Snackbar, LiveDateTime, Search, NewTask},
   computed: {
     appTitle() {
       return process.env.VUE_APP_TITLE
